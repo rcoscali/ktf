@@ -9,7 +9,7 @@ ktf_scripts = $(srctree)/$(src)/../scripts
 
 $(obj)/$(ktf_syms): $(srctree)/$(src)/ktf_syms.txt $(ktf_scripts)/resolve
 	@echo "  KTFSYMS $@"
-	$(Q)$(ktf_scripts)/resolve $(ccflags-y) $< $@
+	$(Q)python3 $(ktf_scripts)/resolve $(ccflags-y) $< $@
 
 clean-files += $(ktf_syms)
 
