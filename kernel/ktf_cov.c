@@ -13,11 +13,14 @@
 #include <linux/string.h>
 #include <linux/kprobes.h>
 #include <linux/ptrace.h>
+#include <linux/mutex.h>
 #include "ktf.h"
 #include "ktf_map.h"
 #include "ktf_cov.h"
 #include "ktf_compat.h"
 #include "ktf_kallsyms.h"
+
+DEFINE_MUTEX(mutex_module);
 
 /* It may seem odd that we use a refcnt field in ktf_cov_entry structures
  * in addition to using krefcount management via the ktf_map.  The reasoning
