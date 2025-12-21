@@ -70,7 +70,7 @@ class Module:
 
     # Parse the relevant header files for function defs:
     def ParseDefs(self):
-        for hf in self.symbols.keys():
+        for hf in list(self.symbols.keys()):
             self.log(" ** Parsing %s:" % hf)
             header = self.Open(hf)
             if header == None:
@@ -91,8 +91,8 @@ class Module:
                 s_count = s_count + 1
 
             if s_count != len(symbols):
-                print(" ** Warning: File %s: Found %d definitions from %d symbols!" % \
-                    (hf, s_count, len(symbols)))
+                print((" ** Warning: File %s: Found %d definitions from %d symbols!" % \
+                    (hf, s_count, len(symbols))))
                 print(" ** - please check/fix output manually!")
 
     # Output functions:
@@ -161,10 +161,10 @@ try:
             s = match.group(1)
             module.AddSymbol(s)
 except ResolveError as e:
-    print(e.value)
+    print((e.value))
     exit(1)
 except:
-    print("Unable to open config file \"%s\"" % symfile)
+    print(("Unable to open config file \"%s\"" % symfile))
     exit(1)
 
 for m in all_modules:
@@ -173,7 +173,7 @@ for m in all_modules:
 try:
     output = open(outputfile, "w")
 except:
-    print("Failed to open output header file \"%s\"" % outputfile)
+    print(("Failed to open output header file \"%s\"" % outputfile))
 output.write('#ifndef _KTF_RESOLVE_H\n#define _KTF_RESOLVE_H\n')
 output.write('#include "ktf.h"\n\nstruct ktf_syms {\n')
 
