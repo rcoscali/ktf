@@ -14,3 +14,4 @@ libtool
 *.ko
 *.xml
 build
+*~
