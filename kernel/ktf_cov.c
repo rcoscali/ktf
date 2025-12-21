@@ -20,7 +20,7 @@
 #include "ktf_compat.h"
 #include "ktf_kallsyms.h"
 
-DEFINE_MUTEX(mutex_module);
+DEFINE_MUTEX(module_mutex);
 
 /* It may seem odd that we use a refcnt field in ktf_cov_entry structures
  * in addition to using krefcount management via the ktf_map.  The reasoning
