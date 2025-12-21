@@ -313,7 +313,6 @@ static inline int ktf_no_probe_support(void)
 		.symbol_name = #func, \
 		.pre_handler = probehandler, \
 		.post_handler = ktf_post_handler, \
-		.fault_handler = NULL, \
 		.flags = 0, \
         }; \
         static int probehandler(struct kprobe *kp, struct pt_regs *regs)
