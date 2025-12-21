@@ -3,12 +3,13 @@ Kernel Test Framework documentation
 
 .. toctree::
    :maxdepth: 2
+   :caption: Contents:
 
-   introduction
-   implementation
-   features
-   installation
-   concepts
-   examples
-   progref
-   debugging
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
