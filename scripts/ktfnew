@@ -130,6 +130,7 @@ install: all
     mfile.close()
 
     # Create a simple module template:
+    cname = name.replace('-', '_')
     module = open("%s/kernel/%s.c" % (target_root, name), "w")
     module.write('''
 #include <linux/module.h>\n#include "ktf.h"\n
@@ -141,7 +142,7 @@ static int __init %s_init(void)\n{\n\tadd_tests();\n\treturn 0;\n}
 static void __exit %s_exit(void)\n{\n\tKTF_CLEANUP();\n}\n
 module_init(%s_init);
 module_exit(%s_exit);
-''' % (name, name, name, name) )
+''' % (cname, cname, cname, cname) )
     module.close()
 
     # Now run an intitial autoupdate/autoreconf to set autotools things up:
