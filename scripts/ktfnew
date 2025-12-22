@@ -121,7 +121,7 @@ KDIR   := @KDIR@
 PWD    := $(shell pwd)\n
 EXTRASYMS := KBUILD_EXTRA_SYMBOLS="$(KTF_BDIR)/Module.symvers"\n
 module:
-	$(MAKE) -C $(KDIR) M=$(PWD) $(EXTRASYMS) modules\n
+	$(MAKE) -C $(KDIR) M=$(PWD) $(EXTRASYMS)\n
 clean:
 	$(MAKE) -C $(KDIR) M=$(PWD) clean\n
 check: all
@@ -144,8 +144,8 @@ module_exit(%s_exit);
 ''' % (name, name, name, name) )
     module.close()
 
-    # Now run an intitial autoreconf to set things up:
-    os.system("(cd %s && autoreconf -i 2> /dev/null)" % target_root)
+    # Now run an intitial autoupdate/autoreconf to set autotools things up:
+    os.system("(cd %s && autoupdate && autoreconf -i 2> /dev/null)" % target_root)
 except:
     print(" ** Error: ** ")
     raise
