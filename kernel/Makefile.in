@@ -6,6 +6,7 @@
 # a framework for running unit test like tests within the kernel.
 #
 
+CONFIG_MITIGATION_RETHUNK = n
 KVER = @KVER@
 
 obj-m := ktf.o
