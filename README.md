@@ -58,3 +58,44 @@ their code.
 See [./doc](./doc)
 
 
+## build
+
+## Building googletest
+
+```
+# apt install cmake
+# mkdir ~/Sources
+# cd Sources
+# mkdir -p ktf-src
+# cd ktf-src/
+# git clone --recurse-submodules https://github.com/google/googletest.git
+# mkdir -p build/`uname -r`
+# cd build/`uname -r`
+# mkdir googletest
+# cd googletest/
+# cmake -DBUILD_SHARED_LIBS=ON ~/Sources/ktf-src/googletest
+# make
+# sudo make install
+```
+
+## Building KTF
+
+We need kernel headers and cpp packages to build. Finally once we have built ktf, we insert the kernel module.
+
+```
+# sudo apt install autoconf libnl-3-dev libnl-genl-3-dev libnl-cli-3-dev libnl-route-3-dev libnl-nf-3-dev libnl-idiag-3-dev libnl-xfrm-3-dev
+# sudo apt install cpp linux-headers-`uname -r`
+# cd ~/Sources/ktf-src
+# git clone https://gitlab.com/rcoscali/ktf
+# cd ktf
+# autoreconf
+# cd ~/Sources/ktf-src/build/`uname -r`
+# mkdir ktf
+# cd ktf
+# PKG_CONFIG_PATH=/usr/local/lib/pkgconfig ~/Sources/ktf-src/ktf/configure KVER=`uname -r`
+# make
+# sudo make install
+# sudo mkdir /usr/local/kernel
+# sudo cp -f kernel/ktf.ko /usr/local/kernel
+# sudo insmod /usr/local/kernel/ktf.ko
+```
