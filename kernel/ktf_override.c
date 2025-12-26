@@ -17,6 +17,7 @@ asm(
 	".globl ktf_just_return_func\n"
 	"ktf_just_return_func:\n"
 	"	ret\n"
+	"	int3\n"
 	".size ktf_just_return_func, .-ktf_just_return_func\n"
 );
 
@@ -42,6 +43,7 @@ static void *ktf_find_current_kprobe_sym(void)
  * "current_kprobe" to NULL ourselves.
  */
 #endif
+
 void ktf_override_function_with_return(struct pt_regs *regs)
 {
 #if (LINUX_VERSION_CODE < KERNEL_VERSION(4, 19, 0))
